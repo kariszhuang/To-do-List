@@ -1,0 +1,34 @@
+.subtitles{
+    font-family: cursive;
+    margin-top: 10px;
+    font-size:30px;
+    line-height: 50px;
+    background-color: blueviolet;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.884);
+    color:antiquewhite;
+    margin-left: 20px;
+}
+.subTitle{
+    margin-left:10px;
+    margin-right: 10px;
+}
+.titleButton{
+    background-color: aqua;
+    width:200px;
+    height:40px;
+    font-size:25px;
+    font-weight: 600;
+    font-family:serif;
+   
+}
+.buttonContainer{
+    position:"relative";
+    margin:0px;
+    display:inline-block;
+    vertical-align:"top";
+}
+body{
+    background-color:rgb(141, 188, 228);
+    margin:30px;
+   
+}

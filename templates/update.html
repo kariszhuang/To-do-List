@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Update</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css') }}">
+</head>
+
+<body>
+    <h1 style="font-size:40px;margin-bottom:20px;text-align:center;"><br><br><br>
+You can update your information here:</h1><br><br>
+
+<form action="/update/{{task.id}}" method = "POST" style="text-align:center">
+    <input type="text" value="{{task.content}}" name="content" id="content" class="textbox" >
+    <input type="submit" value="Update" class="button">
+
+</form>
+</body>
+
+
+</html>

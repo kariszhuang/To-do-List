@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="{{url_for('static',filename='css/main.css') }}">
+<title>
+    To-do List
+</title>
+
+</head>
+
+
+<body>
+<div id ="react"></div>
+
+<div class="content">
+<h1>To-do List</h1>
+{% if tasks|length ==0 %}
+Welcome to add some tasks!<br><br>
+{% else %}
+<table>
+    <tr>
+        <td>
+            <b>Task</b>
+        </td>
+        <td>
+            <b>Added Time</b>
+        </td>
+        <td>
+            <b>Actions</b>
+        </td>
+    </tr>
+    {% for task in tasks %}
+    <!-- task is an object of the objects list "tasks"-->
+    <tr>
+        <!-- We get the attribute of task class -->
+        <td>{{task.content}}</td>
+        <td>{{task.date_created.strftime('%b.%d %H:%M:%S')}}</td>
+        <td><i>
+            <a href="/delete/{{task.id}}" >Delete</a><br>
+            <a href="/update/{{task.id}}" >Update</a><br>
+        </i>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{%endif%}
+ <form action="/" method="POST">
+    <input type="text" name="content" id="content" class="textbox">
+    <input type="submit" value="Add Task" class="button">
+ </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='script/react_output.js') }}"></script>
+
+</body>
+
+
+</html>
