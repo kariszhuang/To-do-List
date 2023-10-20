@@ -13,12 +13,13 @@
 <div id ="react"></div>
 
 <div class="content">
-<h1>To-do List</h1>
+<h1>{{username}}'s To-do List</h1>
 {% if tasks|length ==0 %}
 Welcome to add some tasks!<br><br>
 {% else %}
 <table>
     <tr>
+        <td></td>
         <td>
             <b>Task</b>
         </td>
@@ -31,19 +32,51 @@ Welcome to add some tasks!<br><br>
     </tr>
     {% for task in tasks %}
     <!-- task is an object of the objects list "tasks"-->
+    {% if task.status %}
     <tr>
+        <td>
+            <form action="/" id="checkbox_{{task.id}}" method="post">
+            <input type="hidden" name="id" value={{task.id}}>
+            <input type="checkbox" name="checkbox" onchange="submit({{task.id}});" checked>
+            
+
+            </form>
+        </td>
+        <!-- We get the attribute of task class -->
+        <td><del>{{task.content}}</del></td>
+        <td><del>{{task.date_created.strftime('%b.%d %H:%M:%S')}}</del></td>
+        <td><i>
+            <a href="/delete/{{task.id}}/{{id}}" >Delete</a><br>
+            <a href="/update/{{task.id}}/{{id}}" >Update</a><br>
+        </i>
+        </td>
+    </tr>
+
+    {% else %}
+    <tr>
+        <td>
+            <form action="/" id="checkbox_{{task.id}}" method="post">
+            <input type="hidden" name="id" value={{task.id}}>
+            <input type="checkbox" name="checkbox" onchange="submit({{task.id}});">
+            
+
+            </form>
+        </td>
         <!-- We get the attribute of task class -->
         <td>{{task.content}}</td>
         <td>{{task.date_created.strftime('%b.%d %H:%M:%S')}}</td>
         <td><i>
-            <a href="/delete/{{task.id}}" >Delete</a><br>
-            <a href="/update/{{task.id}}" >Update</a><br>
+            <a href="/delete/{{task.id}}/{{id}}" >Delete</a><br>
+            <a href="/update/{{task.id}}/{{id}}" >Update</a><br>
         </i>
         </td>
     </tr>
+    {% endif %}
     {% endfor %}
 </table>
 {%endif%}
+
+<!-- Checkbox submit "on" or None to home page-->
  <form action="/" method="POST">
     <input type="text" name="content" id="content" class="textbox">
     <input type="submit" value="Add Task" class="button">
@@ -53,6 +86,11 @@ Welcome to add some tasks!<br><br>
 
 <script src="{{ url_for('static', filename='script/react_output.js') }}"></script>
 
+<script>
+    function submit(id){
+        document.getElementById("checkbox_"+id).submit()
+    }
+</script>
 </body>
 
 
