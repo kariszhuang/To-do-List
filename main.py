@@ -1,10 +1,9 @@
 from flask import Flask, render_template, url_for,request,redirect,make_response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
-import pymysql
 import hashlib
+
 app=Flask(__name__)
-from urllib.parse import quote_plus
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = (
