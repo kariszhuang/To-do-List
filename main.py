@@ -8,8 +8,8 @@ from urllib.parse import quote_plus
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    "mysql+mysqldb://root:12345678@34.133.255.17/hi"
-    #"mysql+pymysql://root:12345678@34.133.255.17/hi?unix_socket=/cloudsql/first-flask-app-001:tdl-data"
+    "mysql+mysqldb://<user>:<password>@<ip>/<dbname>"
+    
 )
 
 
